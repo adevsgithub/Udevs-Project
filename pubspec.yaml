@@ -39,6 +39,11 @@ dependencies:
   flutter_svg: ^1.1.6
   flutter_bloc: ^8.1.1
   expandable_bottom_bar: ^2.0.2
+  firebase_core: ^2.8.0
+  cloud_firestore: ^4.4.5
+  firebase_auth: ^4.3.0
+  provider: ^6.0.5
+  firebase_ui_auth: ^1.1.17
 
 dev_dependencies:
   flutter_test:

@@ -1,90 +1,98 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:udevs_project/ui/categories_screen.dart';
+import 'package:udevs_project/ui/task-list.dart';
+
+import 'alert-dialog.dart/alert-dialog.dart';
 
 class EmptyScreen extends StatelessWidget {
-  const EmptyScreen({super.key});
-
+  const EmptyScreen(this.pressed, {super.key});
+  final bool pressed;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // bottomNavigationBar: MainTabsPage(),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80.h),
+        preferredSize: pressed ? Size.fromHeight(80.h) : Size.fromHeight(220.h),
         child: myAppbar(),
       ),
-      body: Column(
-        children: [
-          Center(
-            child: Container(
-              margin: const EdgeInsets.only(top: 180),
-              height: 200,
-              width: 200,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                    'assets/images/note_im.png',
+      body: 3 == 3
+          ? const MyListTask()
+          : Column(
+              children: [
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 100),
+                    height: 200,
+                    width: 200,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(
+                          'assets/images/note_im.png',
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                SizedBox(height: 40.h),
+                Text(
+                  'No tasks',
+                  style: TextStyle(
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(
+                      0xFF554E8F,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-          SizedBox(
-            height: 40.h,
-          ),
-          Text(
-            'No tasks',
-            style: TextStyle(
-              fontSize: 22.sp,
-              fontWeight: FontWeight.w500,
-              color: const Color(
-                0xFF554E8F,
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 
   AppBar myAppbar() {
     return AppBar(
+      backgroundColor: Color(0xFF81C7F5),
       titleSpacing: 0,
-      toolbarHeight: 80.h,
+      toolbarHeight: 220.h,
       automaticallyImplyLeading: false,
       flexibleSpace: Image(
         image: const AssetImage(
           'assets/images/appbar_beck.png',
         ),
-        height: 200.h,
+        height: 400.h,
         fit: BoxFit.cover,
       ),
       title: Container(
         padding: const EdgeInsets.all(20),
         width: double.infinity,
-        child: const Text(
-          'Hello Brenda!\nToday you have 9 tasks',
+        child: Column(
+          children: [
+            Row(
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                const Text(
+                  'Hello Brenda!\nToday you have 9 tasks',
+                ),
+                const Spacer(),
+                const Padding(
+                  padding: EdgeInsets.only(right: 20, top: 10),
+                  child: CircleAvatar(
+                    maxRadius: 24,
+                    backgroundColor: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            const MyAlertDialog()
+          ],
         ),
       ),
-      // ignore: prefer_const_literals_to_create_immutables
-      actions: [
-        const Padding(
-          padding: EdgeInsets.only(right: 20, top: 10),
-          child: CircleAvatar(
-            maxRadius: 24,
-            backgroundColor: Colors.white,
-          ),
-        ),
-      ],
     );
   }
 
   Container bottomNavigatorBar() {
     return Container(
-      decoration: const BoxDecoration(
-        border: Border(
-            // top: BorderSide(color: Color(0xffE2E6E8), width: 1),
-            ),
-      ),
       height: 94.h,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -92,7 +100,7 @@ class EmptyScreen extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Color(0xff06AB8D),
+              color: const Color(0xff06AB8D),
               borderRadius: BorderRadius.circular(62),
             ),
             height: 50.h,

@@ -75,7 +75,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                 MyElevetedBtn(
                   title: 'Add task',
                   onPressed: () {},
-                  colors: Color(0xFF7EB6FF),
+                  colors: const Color(0xFF7EB6FF),
                 ),
               ],
             ),
@@ -100,21 +100,22 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
 
   _myDropDown(BuildContext context) {
     return DropdownButton(
-      underline: SizedBox(),
+      underline: const SizedBox(),
       value: selectedValue,
       isExpanded: true,
       hint: Text(
         'Jinsi',
         style: TextStyle(fontSize: 14, color: Theme.of(context).hintColor),
       ),
+      // ignore: prefer_const_literals_to_create_immutables
       items: [
-        DropdownMenuItem(
+        const DropdownMenuItem(
           value: 'ayol',
-          child: Text('Ayol', style: const TextStyle(fontSize: 14)),
+          child: Text('Ayol', style: TextStyle(fontSize: 14)),
         ),
-        DropdownMenuItem(
+        const DropdownMenuItem(
           value: 'erkak',
-          child: Text('Erkak', style: const TextStyle(fontSize: 14)),
+          child: Text('Erkak', style: TextStyle(fontSize: 14)),
         ),
       ],
       onChanged: (Object? value) {},

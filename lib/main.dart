@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:udevs_project/ui/main_tab_page.dart';
+import 'package:udevs_project/ui/onboard_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          // home: const OnboardScreen(),
-          home: MainTabsPage(),
+          home: const OnboardScreen(),
+          // home: const MainTabsPage(),
         );
       },
     );

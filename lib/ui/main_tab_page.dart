@@ -16,17 +16,7 @@ class MainTabsPage extends StatefulWidget {
 
 class _MainTabsPageState extends State<MainTabsPage> {
   final tabsCubit = TabsCubit();
-  double _dotsheight = 20.h;
-  double _dotswidht = 30.w;
-
-  get onChanged => null;
-
-  void _boxAnimated() {
-    setState(() {
-      _dotsheight = 70.h;
-      _dotswidht = 100.w;
-    });
-  }
+  bool _isPressed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +27,7 @@ class _MainTabsPageState extends State<MainTabsPage> {
           body: IndexedStack(
             index: state,
             children: [
-              const EmptyScreen(),
-              Container(color: Colors.green),
+              EmptyScreen(_isPressed),
             ],
           ),
           floatingActionButton: SizedBox(
@@ -48,38 +37,13 @@ class _MainTabsPageState extends State<MainTabsPage> {
               child: FloatingActionButton(
                 backgroundColor: AppColors.btnColor,
                 onPressed: () {
-                  // showModalBottomSheet(
-                  //     context: context,
-                  //     builder: (context) {
-                  //       // using a scaffold helps to more easily position the FAB
-                  //       return Scaffold(
-                  //         body: Column(
-                  //           crossAxisAlignment: CrossAxisAlignment.center,
-                  //           children: [
-                  //             SizedBox(
-                  //               width: double.maxFinite,
-                  //             ),
-                  //             Padding(
-                  //               padding: EdgeInsets.all(30.0),
-                  //               child: Text("Text in the sheet"),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //         // translate the FAB up by 30
-                  //         floatingActionButton: Container(
-                  //           transform: Matrix4.translationValues(0.0, -30, 0.0), // translate up by 30
-                  //           child: FloatingActionButton(
-                  //             onPressed: () {
-                  //               // do stuff
-                  //               print('doing stuff');
-                  //             },
-                  //             child: Icon(Icons.add),
-                  //           ),
-                  //         ),
-                  //         // dock it to the center top (from which it is translated)
-                  //         floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
-                  //       );
-                  //     });
+                  _isPressed = true;
+                  setState(() {});
+                  Future.delayed(const Duration(seconds: 2)).then((value) {
+                    _isPressed = false;
+                    setState(() {});
+                  });
+
                   showModalBottomSheet(
                       isScrollControlled: true,
                       context: context,
@@ -104,9 +68,7 @@ class _MainTabsPageState extends State<MainTabsPage> {
           bottomNavigationBar: BottomAppBar(
             child: Container(
               height: 44.h,
-              margin: const EdgeInsets.only(
-                top: 12,
-              ),
+              margin: const EdgeInsets.only(top: 12),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -150,5 +112,3 @@ class _MainTabsPageState extends State<MainTabsPage> {
     );
   }
 }
-
-class RaisedButton {}

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:udevs_project/constants/app_colors.dart';
@@ -247,7 +246,7 @@ class _MyConteiner5State extends State<MyConteiner5> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Color.fromARGB(255, 244, 120, 54),
+              color: const Color.fromARGB(255, 244, 120, 54),
             ),
             height: 8.h,
             width: 8.w,
@@ -256,9 +255,9 @@ class _MyConteiner5State extends State<MyConteiner5> {
             onTap: () {
               if (_color == Colors.transparent) {
                 setState(() {
-                  _color = Color.fromARGB(255, 244, 120, 54);
+                  _color = const Color.fromARGB(255, 244, 120, 54);
                 });
-              } else if (_color == Color.fromARGB(255, 244, 120, 54)) {
+              } else if (_color == const Color.fromARGB(255, 244, 120, 54)) {
                 setState(() {
                   _color = Colors.transparent;
                 });

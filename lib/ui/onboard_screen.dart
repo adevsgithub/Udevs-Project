@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:udevs_project/ui/button/my-elevetd_btn.dart';
-import 'package:udevs_project/ui/empty_screen.dart';
+import 'package:udevs_project/ui/main_tab_page.dart';
 
 class OnboardScreen extends StatelessWidget {
   const OnboardScreen({super.key});
@@ -45,12 +45,12 @@ class OnboardScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) {
-                          return EmptyScreen();
+                          return const MainTabsPage();
                         }),
                       );
                     },
                   ),
-                  const Spacer()
+                  const Spacer(),
                 ],
               ),
             ),
